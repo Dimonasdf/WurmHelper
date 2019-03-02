@@ -48,10 +48,8 @@ namespace WurmHelper
 			
 			totalProgressBarTimer.Interval = inaccuracyTick;
 			totalProgressBarTimer.Tick += new System.EventHandler(TotalProgressBarTimer_Tick);
-			
 
-
-		}
+        }
 
 
 		private async void Craft()
@@ -75,9 +73,6 @@ namespace WurmHelper
 			for (int t = 0; t < Utilities.numOfLoops; t++)
 			{
 				rng = new Random();
-
-				
-				
 
 				VirtualMouse.LeftUp();
 				Utilities.prevMousePosition = VirtualMouse.GetPosition() * Utilities.scaleMultiplier;
@@ -224,7 +219,7 @@ namespace WurmHelper
 
 			Utilities.resolutionX = int.Parse(resolutionXData.Text);
 			Utilities.resolutionY = int.Parse(resolutionYData.Text);
-			Utilities.scaleMultiplier = float.Parse(scaleMultiplierData.Text);
+			Utilities.scaleMultiplier = float.Parse(scaleMultiplierData.Text, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.NumberFormatInfo.InvariantInfo);
 
 			Utilities.buttonPositionX = int.Parse(buttonPositionXData.Text);
 			Utilities.buttonPositionY = int.Parse(buttonPositionYData.Text);

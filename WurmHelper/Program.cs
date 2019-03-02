@@ -21,12 +21,10 @@ namespace WurmHelper
 		[STAThread]
 		public static void Main()
 		{
-			//
-			//Change back to Windows Application in Project->Properties
-			//
-
-
-			Application.EnableVisualStyles();
+            //
+            //Change back to Windows Application in Project->Properties
+            //
+            Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 
 			Utilities.InitializeConfigurationDataFile();

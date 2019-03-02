@@ -33,7 +33,7 @@ namespace WurmHelper
 		public static int buttonPositionX = 0;
 		public static int buttonPositionY = 0;
 
-		const string ConfigurationDataFileName = "ConfigurationData";
+		const string ConfigurationDataFileName = "WurmHelperConfigs.csv";
 		static readonly string names = "numOfLoops,durationOfLoop,offsetDurationOfLoop,numOfClicks,resolutionX,resolutionY,scaleMultiplier,buttonPositionX,buttonPositionY";
 
 
@@ -56,7 +56,10 @@ namespace WurmHelper
 			{
 				output = File.CreateText(ConfigurationDataFileName);
 				output.WriteLine(names);
-				output.WriteLine($"{numOfLoops},{durationOfLoop},{offsetDurationOfLoop},{numOfClicks},{resolutionX},{resolutionY},{scaleMultiplier},{buttonPositionX},{buttonPositionY}");
+                string swapMultiplier = scaleMultiplier.ToString();
+                swapMultiplier = swapMultiplier.Replace(',', '.');
+
+				output.WriteLine($"{numOfLoops},{durationOfLoop},{offsetDurationOfLoop},{numOfClicks},{resolutionX},{resolutionY},{swapMultiplier},{buttonPositionX},{buttonPositionY}");
 			}
 			catch (Exception e)
 			{
@@ -111,61 +114,10 @@ namespace WurmHelper
 
 			resolutionX = int.Parse(values[4]);
 			resolutionY = int.Parse(values[5]);
-			scaleMultiplier = float.Parse(values[6]);
+			scaleMultiplier = float.Parse(values[6], System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.NumberFormatInfo.InvariantInfo);
 
 			buttonPositionX = int.Parse(values[7]);
 			buttonPositionY = int.Parse(values[8]);
 		}
-
-		/*
-		public static async Task ForWithDelay<T>(System.Timers.Timer timer, int interval, Func<T, Task> action)
-		{
-			timer.Interval = interval;
-
-			var task = new Task(() => { });
-
-				timer.Elapsed += async (sender, args) =>
-				{
-					T item;
-					if (queue.TryDequeue(out item))
-					{
-						try
-						{
-							await action(item);
-						}
-						finally
-						{
-							// Complete task.
-							remaining -= 1;
-
-							if (remaining == 0)
-							{
-								// No more items to process. Complete task.
-								task.Start();
-							}
-						}
-					}
-				};
-
-				timer.Start();
-
-				await task;
-		}
-		*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	}
 }

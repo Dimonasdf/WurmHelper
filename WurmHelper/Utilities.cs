@@ -21,11 +21,11 @@ namespace WurmHelper
 		public static int offsetDurationOfLoop = 2000;
 
 		public static int numOfClicks = 3;
+        
+		public static int resolutionX = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
+		public static int resolutionY = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
 
-		public static int resolutionX = 3840;
-		public static int resolutionY = 2160;
-
-		public static float scaleMultiplier = 1.5f;
+		public static float scaleMultiplier = 1.0f;
 
 		public static Vector2 prevMousePosition;
 		public static Vector2 currentMousePosition;
@@ -56,10 +56,8 @@ namespace WurmHelper
 			{
 				output = File.CreateText(ConfigurationDataFileName);
 				output.WriteLine(names);
-                string swapMultiplier = scaleMultiplier.ToString();
-                swapMultiplier = swapMultiplier.Replace(',', '.');
 
-				output.WriteLine($"{numOfLoops},{durationOfLoop},{offsetDurationOfLoop},{numOfClicks},{resolutionX},{resolutionY},{swapMultiplier},{buttonPositionX},{buttonPositionY}");
+				output.WriteLine($"{numOfLoops},{durationOfLoop},{offsetDurationOfLoop},{numOfClicks},{resolutionX},{resolutionY},{CommaEliminated(scaleMultiplier)},{buttonPositionX},{buttonPositionY}");
 			}
 			catch (Exception e)
 			{
@@ -114,10 +112,25 @@ namespace WurmHelper
 
 			resolutionX = int.Parse(values[4]);
 			resolutionY = int.Parse(values[5]);
-			scaleMultiplier = float.Parse(values[6], System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.NumberFormatInfo.InvariantInfo);
+			scaleMultiplier = float.Parse(CommaEliminated(values[6]));
 
 			buttonPositionX = int.Parse(values[7]);
 			buttonPositionY = int.Parse(values[8]);
 		}
-	}
+
+        //is also used in MainWindow
+        public static string CommaEliminated (string input)
+        {
+            input = input.Replace(',', '.');
+            return input;
+        }
+
+        //is only used here
+        static string CommaEliminated(float input)
+        {
+            string convertedInput = input.ToString();
+            convertedInput = convertedInput.Replace(',', '.');
+            return convertedInput;
+        }
+    }
 }

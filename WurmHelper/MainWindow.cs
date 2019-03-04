@@ -34,12 +34,13 @@ namespace WurmHelper
 		
 		public MainWindow()
 		{
-			InitializeComponent();
-			/*			
+            InitializeComponent();
+            LoadInputValuesFromUtils();
+            /*			
 			theTimer.Interval = 1;
 			theTimer.Tick += new System.EventHandler(TheTimer_Tick);
 			*/
-			mousePosRefreshTimer.Interval = 100;
+            mousePosRefreshTimer.Interval = 100;
 			mousePosRefreshTimer.Start();
 			mousePosRefreshTimer.Tick += new System.EventHandler(MousePosRefreshTimer_Tick);
 			
@@ -180,7 +181,7 @@ namespace WurmHelper
 			totalProgressBar.Refresh();
 		}
 
-			private void MainWindow_Load(object sender, EventArgs e)
+		private void MainWindow_Load(object sender, EventArgs e)
 		{
 			LoadInputValuesFromUtils();
 		}
@@ -219,7 +220,7 @@ namespace WurmHelper
 
 			Utilities.resolutionX = int.Parse(resolutionXData.Text);
 			Utilities.resolutionY = int.Parse(resolutionYData.Text);
-			Utilities.scaleMultiplier = float.Parse(scaleMultiplierData.Text, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.NumberFormatInfo.InvariantInfo);
+			Utilities.scaleMultiplier = float.Parse(Utilities.CommaEliminated(scaleMultiplierData.Text));
 
 			Utilities.buttonPositionX = int.Parse(buttonPositionXData.Text);
 			Utilities.buttonPositionY = int.Parse(buttonPositionYData.Text);

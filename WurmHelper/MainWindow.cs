@@ -30,7 +30,6 @@ namespace WurmHelper
 		int delayTime = 0;
 		int inaccuracyIncrement = 16;
 		int inaccuracyTick = 1;
-
 		
 		public MainWindow()
 		{
@@ -57,10 +56,9 @@ namespace WurmHelper
 		{
 			#region Fields
 			Random rng;
-			
 
 			totalProgressBar.Value = 0;
-			totalProgressBar.Maximum = Utilities.numOfLoops * (Utilities.durationOfLoop + Utilities.numOfClicks * 450);
+			totalProgressBar.Maximum = Utilities.numOfLoops * (Utilities.durationOfLoop + Utilities.numOfClicks * (Utilities.minClickDelay + Utilities.maxClickDelay)/2);
 			totalProgressBar.Step = inaccuracyIncrement;
 			totalProgressBarTimer.Start();
 
@@ -81,7 +79,7 @@ namespace WurmHelper
 
 				for (int l = 0; l < Utilities.numOfClicks; l++)
 				{
-					delayTime = rng.Next(300, 600);
+					delayTime = rng.Next(Utilities.minClickDelay, Utilities.maxClickDelay + 1);
                     //UpdateEventLog("Move to: " + Utilities.buttonPositionX.ToString() + " " + Utilities.buttonPositionY.ToString());
                     //UpdateEventLog("Moving to: " + (Utilities.buttonPositionX * Utilities.scaleMultiplier).ToString() + " " + (Utilities.buttonPositionY * Utilities.scaleMultiplier).ToString());
                     VirtualMouse.MoveTo(Utilities.buttonPositionX * Utilities.scaleMultiplier, Utilities.buttonPositionY * Utilities.scaleMultiplier);
@@ -104,7 +102,7 @@ namespace WurmHelper
 					UpdateEventLog("Clicked with delay of " + delayTime + " ms");
 				}
 
-				delayTime = rng.Next(Utilities.durationOfLoop - Utilities.offsetDurationOfLoop, Utilities.durationOfLoop + Utilities.offsetDurationOfLoop);
+				delayTime = rng.Next(Utilities.durationOfLoop, Utilities.durationOfLoop + Utilities.extraDurationOfLoop + 1);
 
                 //UpdateEventLog("Returning to: " + Utilities.prevMousePosition.X.ToString() + " " + Utilities.prevMousePosition.Y.ToString());
                 VirtualMouse.MoveTo(Utilities.prevMousePosition.X, Utilities.prevMousePosition.Y);
@@ -198,12 +196,18 @@ namespace WurmHelper
 		}
 		private void StartButton_Click(object sender, EventArgs e)
 		{
-			SaveInputValuesToUtils();
-			Utilities.WriteConfigsToFile();
+			if (SaveInputValuesToUtils())
+            {
+                Utilities.WriteConfigsToFile();
 
-			mousePosRefreshTimer.Stop();
+                mousePosRefreshTimer.Stop();
 
-			Craft();
+                Craft();
+            }
+            else
+            {
+
+            }
 		}
 		private void StopButton_Click(object sender, EventArgs e)
 		{
@@ -216,29 +220,68 @@ namespace WurmHelper
 			EventLog.Text = EventLog.Text.Insert(0, input + "\n");
 		}
 
-		private void SaveInputValuesToUtils()
+		private bool SaveInputValuesToUtils()
 		{
-			Utilities.numOfLoops = int.Parse(numOfLoopsData.Text);
-			Utilities.durationOfLoop = int.Parse(durationOfLoopData.Text);
-			Utilities.offsetDurationOfLoop = int.Parse(offsetDurationOfLoopData.Text);
+            if (CheckForValidInput(numOfLoopsData.Text) &&
+                CheckForValidInput(durationOfLoopData.Text) &&
+                CheckForValidInput(offsetDurationOfLoopData.Text) &&
 
-			Utilities.numOfClicks = int.Parse(numOfClicksData.Text);
+                CheckForValidInput(minClickDelayData.Text) &&
+                CheckForValidInput(maxClickDelayData.Text) &&
 
-			Utilities.resolutionX = int.Parse(resolutionXData.Text);
-			Utilities.resolutionY = int.Parse(resolutionYData.Text);
-			Utilities.scaleMultiplier = float.Parse(Utilities.CommaEliminated(scaleMultiplierData.Text));
+                CheckForValidInput(numOfClicksData.Text) &&
 
-			Utilities.buttonPositionX = int.Parse(buttonPositionXData.Text);
-			Utilities.buttonPositionY = int.Parse(buttonPositionYData.Text);
+                CheckForValidInput(buttonPositionXData.Text) &&
+                CheckForValidInput(buttonPositionYData.Text)
+                )
+            {
+                Utilities.numOfLoops = int.Parse(numOfLoopsData.Text);
+                Utilities.durationOfLoop = int.Parse(durationOfLoopData.Text);
+                Utilities.extraDurationOfLoop = int.Parse(offsetDurationOfLoopData.Text);
 
-		}
+                Utilities.minClickDelay = int.Parse(minClickDelayData.Text);
+                Utilities.maxClickDelay = int.Parse(maxClickDelayData.Text);
+
+                Utilities.numOfClicks = int.Parse(numOfClicksData.Text);
+                /*
+                Utilities.resolutionX = CheckForIntAndParse(resolutionXData.Text);
+                Utilities.resolutionY = CheckForIntAndParse(resolutionYData.Text);
+                Utilities.scaleMultiplier = float.Parse(Utilities.CommaEliminated(scaleMultiplierData.Text));
+                */
+                Utilities.buttonPositionX = int.Parse(buttonPositionXData.Text);
+                Utilities.buttonPositionY = int.Parse(buttonPositionYData.Text);
+
+                if (Utilities.maxClickDelay < Utilities.minClickDelay)
+                {
+                    string message = "Max click delay value is less than min click delay value.";
+                    string caption = "Error Detected in Input";
+                    MessageBoxButtons buttonOK = MessageBoxButtons.OK;
+
+                    MessageBox.Show(message, caption, buttonOK);
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
 		private void LoadInputValuesFromUtils()
 		{
-			numOfLoopsData.Text = Utilities.numOfLoops.ToString();
+            numOfLoopsData.Text = Utilities.numOfLoops.ToString();
 			durationOfLoopData.Text = Utilities.durationOfLoop.ToString();
-			offsetDurationOfLoopData.Text = Utilities.offsetDurationOfLoop.ToString();
+			offsetDurationOfLoopData.Text = Utilities.extraDurationOfLoop.ToString();
 
-			numOfClicksData.Text = Utilities.numOfClicks.ToString();
+            minClickDelayData.Text = Utilities.minClickDelay.ToString();
+            maxClickDelayData.Text = Utilities.maxClickDelay.ToString();
+
+            numOfClicksData.Text = Utilities.numOfClicks.ToString();
 
 			resolutionXData.Text = Utilities.resolutionX.ToString();
 			resolutionYData.Text = Utilities.resolutionY.ToString();
@@ -247,5 +290,45 @@ namespace WurmHelper
 			buttonPositionXData.Text = Utilities.buttonPositionX.ToString();
 			buttonPositionYData.Text = Utilities.buttonPositionY.ToString();
 		}
-	}
+
+        bool CheckForValidInput (string inputTextBox)
+        {
+            if(inputTextBox.Length == 0)
+            {
+                string message = "You did not enter a value.";
+                string caption = "Error Detected in Input";
+                MessageBoxButtons buttonOK = MessageBoxButtons.OK;
+
+                MessageBox.Show(message, caption, buttonOK);
+                return false;
+            }
+
+            if (!int.TryParse(inputTextBox, out int output))
+            {
+                string message = "Entered value is not a number.";
+                string caption = "Error Detected in Input";
+                MessageBoxButtons buttonOK = MessageBoxButtons.OK;
+
+                MessageBox.Show(message, caption, buttonOK);
+                return false;
+            }
+            else
+            {
+                if (output < 0)
+                {
+                    string message = "Entered value is less than zero.";
+                    string caption = "Error Detected in Input";
+                    MessageBoxButtons buttonOK = MessageBoxButtons.OK;
+
+                    MessageBox.Show(message, caption, buttonOK);
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+
+    }
 }

@@ -16,11 +16,14 @@ namespace WurmHelper
 {
 	public static class Utilities
 	{
-		public static int numOfLoops = 50;
+		public static int numOfLoops = 10;
 		public static int durationOfLoop = 43000;
-		public static int offsetDurationOfLoop = 2000;
+		public static int extraDurationOfLoop = 2000;
 
-		public static int numOfClicks = 3;
+        public static int minClickDelay = 130;
+        public static int maxClickDelay = 170;
+
+        public static int numOfClicks = 3;
         
 		public static int resolutionX = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
 		public static int resolutionY = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
@@ -33,11 +36,11 @@ namespace WurmHelper
 		public static int buttonPositionX = 0;
 		public static int buttonPositionY = 0;
 
-		const string ConfigurationDataFileName = "WurmHelperConfigs.csv";
-		static readonly string names = "numOfLoops,durationOfLoop,offsetDurationOfLoop,numOfClicks,resolutionX,resolutionY,scaleMultiplier,buttonPositionX,buttonPositionY";
+        const string ConfigurationDataFileName = "WurmHelperConfigs.csv";
+		static readonly string names = "numOfLoops,durationOfLoop,offsetDurationOfLoop,minClickDelay,maxClickDelay,numOfClicks,resolutionX,resolutionY,scaleMultiplier,buttonPositionX,buttonPositionY";
 
 
-		public static void InitializeConfigurationDataFile()
+        public static void InitializeConfigurationDataFile()
 		{
 			if (File.Exists(ConfigurationDataFileName))
 			{
@@ -57,7 +60,7 @@ namespace WurmHelper
 				output = File.CreateText(ConfigurationDataFileName);
 				output.WriteLine(names);
 
-				output.WriteLine($"{numOfLoops},{durationOfLoop},{offsetDurationOfLoop},{numOfClicks},{resolutionX},{resolutionY},{CommaEliminated(scaleMultiplier)},{buttonPositionX},{buttonPositionY}");
+				output.WriteLine($"{numOfLoops},{durationOfLoop},{extraDurationOfLoop},{minClickDelay},{maxClickDelay},{numOfClicks},{resolutionX},{resolutionY},{CommaEliminated(scaleMultiplier)},{buttonPositionX},{buttonPositionY}");
 			}
 			catch (Exception e)
 			{
@@ -106,16 +109,19 @@ namespace WurmHelper
 
 			numOfLoops = int.Parse(values[0]);
 			durationOfLoop = int.Parse(values[1]);
-			offsetDurationOfLoop = int.Parse(values[2]);
+			extraDurationOfLoop = int.Parse(values[2]);
 
-			numOfClicks = int.Parse(values[3]);
+            minClickDelay = int.Parse(values[3]);
+            maxClickDelay = int.Parse(values[4]);
 
-			resolutionX = int.Parse(values[4]);
-			resolutionY = int.Parse(values[5]);
-			scaleMultiplier = float.Parse(CommaEliminated(values[6]));
+            numOfClicks = int.Parse(values[5]);
 
-			buttonPositionX = int.Parse(values[7]);
-			buttonPositionY = int.Parse(values[8]);
+			resolutionX = int.Parse(values[6]);
+			resolutionY = int.Parse(values[7]);
+			scaleMultiplier = float.Parse(CommaEliminated(values[8]));
+
+			buttonPositionX = int.Parse(values[9]);
+			buttonPositionY = int.Parse(values[10]);
 		}
 
         //is also used in MainWindow

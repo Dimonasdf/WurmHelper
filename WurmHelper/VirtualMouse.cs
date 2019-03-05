@@ -22,8 +22,8 @@ namespace WurmHelper
 		private const int MOUSEEVENTF_MIDDLEUP = 0x0040;
 		private const int MOUSEEVENTF_ABSOLUTE = 0x8000;
 
-		private const float screenWidth = 3840f;
-		private const float screenHeight = 2160f;
+		private static readonly float screenWidth = Utilities.resolutionX;
+		private static readonly float screenHeight = Utilities.resolutionY;
 
 
 

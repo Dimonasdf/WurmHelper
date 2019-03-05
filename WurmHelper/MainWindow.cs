@@ -77,13 +77,16 @@ namespace WurmHelper
 
 				VirtualMouse.LeftUp();
 				Utilities.prevMousePosition = VirtualMouse.GetPosition() * Utilities.scaleMultiplier;
+                //UpdateEventLog("Prev. mouse position: " + Utilities.prevMousePosition.ToString());
 
 				for (int l = 0; l < Utilities.numOfClicks; l++)
 				{
 					delayTime = rng.Next(300, 600);
-
-					VirtualMouse.MoveTo(Utilities.buttonPositionX * Utilities.scaleMultiplier, Utilities.buttonPositionY * Utilities.scaleMultiplier);
-					VirtualMouse.LeftDown();
+                    //UpdateEventLog("Move to: " + Utilities.buttonPositionX.ToString() + " " + Utilities.buttonPositionY.ToString());
+                    //UpdateEventLog("Moving to: " + (Utilities.buttonPositionX * Utilities.scaleMultiplier).ToString() + " " + (Utilities.buttonPositionY * Utilities.scaleMultiplier).ToString());
+                    VirtualMouse.MoveTo(Utilities.buttonPositionX * Utilities.scaleMultiplier, Utilities.buttonPositionY * Utilities.scaleMultiplier);
+                    //UpdateEventLog("Moved to: " + VirtualMouse.GetPosition().ToString());
+                    VirtualMouse.LeftDown();
 					VirtualMouse.LeftUp();
 
 					currentProgressBar.Value = 0;
@@ -103,9 +106,12 @@ namespace WurmHelper
 
 				delayTime = rng.Next(Utilities.durationOfLoop - Utilities.offsetDurationOfLoop, Utilities.durationOfLoop + Utilities.offsetDurationOfLoop);
 
-				VirtualMouse.MoveTo(Utilities.prevMousePosition.X, Utilities.prevMousePosition.Y);
+                //UpdateEventLog("Returning to: " + Utilities.prevMousePosition.X.ToString() + " " + Utilities.prevMousePosition.Y.ToString());
+                VirtualMouse.MoveTo(Utilities.prevMousePosition.X, Utilities.prevMousePosition.Y);
+                //UpdateEventLog("Returned to: " + VirtualMouse.GetPosition().ToString());
 
-				currentProgressBar.Value = 0;
+
+                currentProgressBar.Value = 0;
 				//counter = 0;
 				currentProgressBar.Maximum = delayTime;
 				currentProgressBar.Step = inaccuracyIncrement;

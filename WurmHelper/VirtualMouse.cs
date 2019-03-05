@@ -18,8 +18,8 @@ namespace WurmHelper
 		private const int MOUSEEVENTF_LEFTUP = 0x0004;
 		private const int MOUSEEVENTF_RIGHTDOWN = 0x0008;
 		private const int MOUSEEVENTF_RIGHTUP = 0x0010;
-		private const int MOUSEEVENTF_MIDDLEDOWN = 0x0020;
-		private const int MOUSEEVENTF_MIDDLEUP = 0x0040;
+		//private const int MOUSEEVENTF_MIDDLEDOWN = 0x0020;
+		//private const int MOUSEEVENTF_MIDDLEUP = 0x0040;
 		private const int MOUSEEVENTF_ABSOLUTE = 0x8000;
 
 		private static readonly float screenWidth = Utilities.resolutionX;

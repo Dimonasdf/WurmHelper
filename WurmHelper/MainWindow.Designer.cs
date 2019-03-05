@@ -60,7 +60,6 @@
             this.mousePosRefreshTimer = new System.Windows.Forms.Timer(this.components);
             this.StopButton = new System.Windows.Forms.Button();
             this.currentProgressBarTimer = new System.Windows.Forms.Timer(this.components);
-            this.theTimer = new System.Windows.Forms.Timer(this.components);
             this.totalProgressBarTimer = new System.Windows.Forms.Timer(this.components);
             this.estimatedTotalLabel = new System.Windows.Forms.Label();
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -327,10 +326,6 @@
             this.StopButton.UseVisualStyleBackColor = true;
             this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
             // 
-            // theTimer
-            // 
-            this.theTimer.Interval = 1;
-            // 
             // estimatedTotalLabel
             // 
             this.estimatedTotalLabel.AutoSize = true;
@@ -454,7 +449,6 @@
 		private System.Windows.Forms.Timer mousePosRefreshTimer;
 		private System.Windows.Forms.Button StopButton;
 		private System.Windows.Forms.Timer currentProgressBarTimer;
-		private System.Windows.Forms.Timer theTimer;
 		private System.Windows.Forms.Timer totalProgressBarTimer;
 		private System.Windows.Forms.Label estimatedTotalLabel;
         private System.Windows.Forms.ToolTip myToolTip;

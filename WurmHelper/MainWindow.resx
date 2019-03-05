@@ -120,9 +120,6 @@
   <metadata name="myToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>895, 13</value>
   </metadata>
-  <metadata name="myToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>895, 13</value>
-  </metadata>
   <data name="durationOfLoopData.ToolTip" xml:space="preserve">
     <value>Measure this manually first time and then enter the value, how long does it take
 for your character to complete an action and regain full stamina.
@@ -140,9 +137,6 @@ ms is seconds * 1000.</value>
   </metadata>
   <metadata name="currentProgressBarTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>390, 13</value>
-  </metadata>
-  <metadata name="theTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>3, 13</value>
   </metadata>
   <metadata name="totalProgressBarTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>653, 13</value>

@@ -33,8 +33,8 @@ namespace WurmHelper
 		public static Vector2 prevMousePosition;
 		public static Vector2 currentMousePosition;
 
-		public static int buttonPositionX = 0;
-		public static int buttonPositionY = 0;
+		public static int buttonPositionX;
+		public static int buttonPositionY;
 
         const string ConfigurationDataFileName = "WurmHelperConfigs.csv";
 		static readonly string names = "numOfLoops,durationOfLoop,offsetDurationOfLoop,minClickDelay,maxClickDelay,numOfClicks,resolutionX,resolutionY,scaleMultiplier,buttonPositionX,buttonPositionY";
@@ -83,16 +83,12 @@ namespace WurmHelper
 				//create stream reader object
 				input = File.OpenText(ConfigurationDataFileName);
 
-				//read in names and values
-				string names = input.ReadLine();
+				//read in names (not needed) and values
+				input.ReadLine();
 				string values = input.ReadLine();
 
 				//set configuration data fields
 				ParseConfigsFromCSV(values);
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e.Message);
 			}
 			finally
 			{
@@ -118,25 +114,24 @@ namespace WurmHelper
 
 			resolutionX = int.Parse(values[6]);
 			resolutionY = int.Parse(values[7]);
-			scaleMultiplier = float.Parse(CommaEliminated(values[8]));
+			scaleMultiplier = float.Parse(EliminateComma(values[8]));
 
 			buttonPositionX = int.Parse(values[9]);
 			buttonPositionY = int.Parse(values[10]);
 		}
 
-        //is also used in MainWindow
-        public static string CommaEliminated (string input)
+        public static string EliminateComma(string input)
         {
-            input = input.Replace(',', '.');
-            return input;
+            string output = input.Replace(',', '.');
+            return output;
         }
-
-        //is only used here
+        
         static string CommaEliminated(float input)
         {
-            string convertedInput = input.ToString();
-            convertedInput = convertedInput.Replace(',', '.');
-            return convertedInput;
+            string output = input.ToString(System.Globalization.CultureInfo.InvariantCulture);
+            output = output.Replace(',', '.');
+            return output;
         }
+        
     }
 }

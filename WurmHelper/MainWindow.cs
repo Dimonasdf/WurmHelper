@@ -23,32 +23,24 @@ namespace WurmHelper
 		//		AccurateTimer			-						3ms min step	-	ASYNC !@#$%
 		//
 
-		//AccurateTimer currentAccTimer, totalAccTimer;
-		//int delay = 1000, counter = 0;
-		//System.Timers.Timer systemCurrentTimer, systemTotalTimer;
-
-		int delayTime = 0;
-		int inaccuracyIncrement = 16;
-		int inaccuracyTick = 1;
+		int delayTime;
+		const int inaccuracyIncrement = 16;
+		const int inaccuracyTick = 1;
 		
 		public MainWindow()
 		{
             InitializeComponent();
             LoadInputValuesFromUtils();
-            /*			
-			theTimer.Interval = 1;
-			theTimer.Tick += new System.EventHandler(TheTimer_Tick);
-			*/
+
             mousePosRefreshTimer.Interval = 100;
 			mousePosRefreshTimer.Start();
-			mousePosRefreshTimer.Tick += new System.EventHandler(MousePosRefreshTimer_Tick);
+			mousePosRefreshTimer.Tick += MousePosRefreshTimer_Tick;
 			
 			currentProgressBarTimer.Interval = inaccuracyTick;
-			currentProgressBarTimer.Tick += new System.EventHandler(CurrentProgressBarTimer_Tick);
+			currentProgressBarTimer.Tick += CurrentProgressBarTimer_Tick;
 			
 			totalProgressBarTimer.Interval = inaccuracyTick;
-			totalProgressBarTimer.Tick += new System.EventHandler(TotalProgressBarTimer_Tick);
-
+			totalProgressBarTimer.Tick += TotalProgressBarTimer_Tick;
         }
 
 
@@ -88,14 +80,12 @@ namespace WurmHelper
 					VirtualMouse.LeftUp();
 
 					currentProgressBar.Value = 0;
-					//counter = 0;
 					currentProgressBar.Maximum = delayTime;
 					currentProgressBar.Step = inaccuracyIncrement;
 
 
 					currentProgressBarTimer.Start();
-					//currentAccTimer = new AccurateTimer(this, new Action(currentAccTimerTick), inaccuracyIncrement);
-					await Delayer(delayTime);
+                    await Delayer(delayTime);
 
 					currentProgressBarTimer.Stop();
 
@@ -110,12 +100,10 @@ namespace WurmHelper
 
 
                 currentProgressBar.Value = 0;
-				//counter = 0;
 				currentProgressBar.Maximum = delayTime;
 				currentProgressBar.Step = inaccuracyIncrement;
 
 				currentProgressBarTimer.Start();
-				//totalAccTimer = new AccurateTimer(this, new Action(totalAccTimerTick), inaccuracyIncrement);
 				UpdateEventLog("Job will perform for " + delayTime + " more ms");
 
 				await Delayer(delayTime);
@@ -126,10 +114,6 @@ namespace WurmHelper
 			UpdateEventLog("Task completed");
 			totalProgressBarTimer.Stop();
 			totalProgressBar.Value = totalProgressBar.Maximum;
-			
-
-			
-
 		}
 
 		async Task Delayer(int delay)
@@ -141,37 +125,10 @@ namespace WurmHelper
 				);
 		}
 
-
-		private void TheTimer_Tick(object sender, EventArgs e)
-		{
-
-		}
 		private void MousePosRefreshTimer_Tick(object sender, EventArgs e)
 		{
 			CurrentMousePositionLabel2.Text = VirtualMouse.GetPosition().ToString();
 		}
-
-		/*
-		async private void currentAccTimerTick()
-		{
-			for (int tick = 0; tick < delayTime; tick += inaccuracyIncrement)
-			{
-				//current progress logic here
-				UpdateEventLog($"max value: {currentProgressBar.Maximum}, progress value: {currentProgressBar.Value}, {DateTime.Now.Millisecond}");
-				currentProgressBar.PerformStep();
-				currentProgressBar.Refresh();
-
-				await Delayer(inaccuracyIncrement);
-			}
-
-		}
-		private void totalAccTimerTick()
-		{
-			//total progress logic here
-			totalProgressBar.PerformStep();
-			totalProgressBar.Refresh();
-		}
-		*/
 
 		private void CurrentProgressBarTimer_Tick(object sender, EventArgs e)
 		{
@@ -189,11 +146,7 @@ namespace WurmHelper
 		{
 			LoadInputValuesFromUtils();
 		}
-		private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			/*mTimer1.Stop();
-			mTimer2.Stop();*/
-		}
+
 		private void StartButton_Click(object sender, EventArgs e)
 		{
 			if (SaveInputValuesToUtils())
@@ -203,10 +156,6 @@ namespace WurmHelper
                 mousePosRefreshTimer.Stop();
 
                 Craft();
-            }
-            else
-            {
-
             }
 		}
 		private void StopButton_Click(object sender, EventArgs e)
@@ -291,7 +240,7 @@ namespace WurmHelper
 			buttonPositionYData.Text = Utilities.buttonPositionY.ToString();
 		}
 
-        bool CheckForValidInput (string inputTextBox)
+        static bool CheckForValidInput (string inputTextBox)
         {
             if(inputTextBox.Length == 0)
             {
@@ -314,9 +263,9 @@ namespace WurmHelper
             }
             else
             {
-                if (output < 0)
+                if (output <= 0)
                 {
-                    string message = "Entered value is less than zero.";
+                    string message = "Entered value is less or equal to zero. You probably don't want that.";
                     string caption = "Error Detected in Input";
                     MessageBoxButtons buttonOK = MessageBoxButtons.OK;
 

@@ -1,4 +1,7 @@
 # WurmHelper
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b5a6d801400547af931bf30a666d0e86)](https://app.codacy.com/app/Dimonasdf/WurmHelper?utm_source=github.com&utm_medium=referral&utm_content=Dimonasdf/WurmHelper&utm_campaign=Badge_Grade_Dashboard)
+
 A little tool to help you with repetitive clicking.
 
 Select quantity of loops and actions. Determine and specify the duration and "Craft"/"Continue" (or other) button location, and this tool with move your mouse to continue your crafting just in time when your stamina comes back. Useful if you want to do some other stuff while crafting, or if you are managing several windows. Launch your game in windowed mode, of course.

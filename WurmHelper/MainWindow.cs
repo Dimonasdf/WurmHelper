@@ -57,15 +57,11 @@ namespace WurmHelper
 
 				VirtualMouse.LeftUp();
 				Utilities.prevMousePosition = VirtualMouse.GetPosition() * Utilities.scaleMultiplier;
-                //UpdateEventLog("Prev. mouse position: " + Utilities.prevMousePosition.ToString());
 
 				for (int l = 0; l < Utilities.numOfClicks; l++)
 				{
 					delayTime = rng.Next(Utilities.minClickDelay, Utilities.maxClickDelay + 1);
-                    //UpdateEventLog("Move to: " + Utilities.buttonPositionX.ToString() + " " + Utilities.buttonPositionY.ToString());
-                    //UpdateEventLog("Moving to: " + (Utilities.buttonPositionX * Utilities.scaleMultiplier).ToString() + " " + (Utilities.buttonPositionY * Utilities.scaleMultiplier).ToString());
                     VirtualMouse.MoveTo(Utilities.buttonPositionX * Utilities.scaleMultiplier, Utilities.buttonPositionY * Utilities.scaleMultiplier);
-                    //UpdateEventLog("Moved to: " + VirtualMouse.GetPosition().ToString());
                     VirtualMouse.LeftDown();
 					VirtualMouse.LeftUp();
 
@@ -84,9 +80,7 @@ namespace WurmHelper
 
 				delayTime = rng.Next(Utilities.durationOfLoop, Utilities.durationOfLoop + Utilities.extraDurationOfLoop + 1);
 
-                //UpdateEventLog("Returning to: " + Utilities.prevMousePosition.X.ToString() + " " + Utilities.prevMousePosition.Y.ToString());
                 VirtualMouse.MoveTo(Utilities.prevMousePosition.X, Utilities.prevMousePosition.Y);
-                //UpdateEventLog("Returned to: " + VirtualMouse.GetPosition().ToString());
 
 
                 currentProgressBar.Value = 0;
@@ -96,7 +90,7 @@ namespace WurmHelper
 				currentProgressBarTimer.Start();
 				UpdateEventLog("Job will perform for " + delayTime + " more ms");
 
-				await Delayer(delayTime);
+				await Delayer(delayTime).ConfigureAwait(true);
 
 				currentProgressBarTimer.Stop();
 			}
@@ -104,13 +98,14 @@ namespace WurmHelper
 			UpdateEventLog("Task completed");
 			totalProgressBarTimer.Stop();
 			totalProgressBar.Value = totalProgressBar.Maximum;
+			currentProgressBar.Value = currentProgressBar.Maximum;
 
 			return;
 		}
 
 		async Task Delayer(int delay)
 		{
-			await Task.Run(async () =>  { await Task.Delay(delay); } );
+			await Task.Run(async () =>  { await Task.Delay(delay).ConfigureAwait(true); } ).ConfigureAwait(true);
 		}
 
 		private void MousePosRefreshTimer_Tick(object sender, EventArgs e)
@@ -120,7 +115,6 @@ namespace WurmHelper
 
 		private void CurrentProgressBarTimer_Tick(object sender, EventArgs e)
 		{
-			//UpdateEventLog($"max value: {currentProgressBar.Maximum}, progress value: {currentProgressBar.Value}, {DateTime.Now.Millisecond}");
 			currentProgressBar.PerformStep();
 			currentProgressBar.Refresh();
 		}
@@ -180,11 +174,7 @@ namespace WurmHelper
                 Utilities.maxClickDelay = int.Parse(maxClickDelayData.Text);
 
                 Utilities.numOfClicks = int.Parse(numOfClicksData.Text);
-                /*
-                Utilities.resolutionX = CheckForIntAndParse(resolutionXData.Text);
-                Utilities.resolutionY = CheckForIntAndParse(resolutionYData.Text);
-                Utilities.scaleMultiplier = float.Parse(Utilities.CommaEliminated(scaleMultiplierData.Text));
-                */
+
                 Utilities.buttonPositionX = int.Parse(buttonPositionXData.Text);
                 Utilities.buttonPositionY = int.Parse(buttonPositionYData.Text);
 

@@ -19,7 +19,7 @@ namespace WurmHelper
 		public static int resolutionX = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
 		public static int resolutionY = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
 
-		public static float scaleMultiplier = 1.0f;
+		public static readonly float scaleMultiplier = 1.0f;
 
 		public static Vector2 prevMousePosition;
 		public static Vector2 currentMousePosition;
@@ -28,7 +28,7 @@ namespace WurmHelper
 		public static int buttonPositionY;
 
         const string ConfigurationDataFileName = "WurmHelperConfigs.csv";
-		static readonly string names = "numOfLoops,durationOfLoop,offsetDurationOfLoop,minClickDelay,maxClickDelay,numOfClicks,resolutionX,resolutionY,scaleMultiplier,buttonPositionX,buttonPositionY";
+		const string names = "numOfLoops,durationOfLoop,offsetDurationOfLoop,minClickDelay,maxClickDelay,numOfClicks,resolutionX,resolutionY,scaleMultiplier,buttonPositionX,buttonPositionY";
 
 
         public static void InitializeConfigurationDataFile()
@@ -53,10 +53,6 @@ namespace WurmHelper
 
 				output.WriteLine($"{numOfLoops},{durationOfLoop},{extraDurationOfLoop},{minClickDelay},{maxClickDelay},{numOfClicks},{resolutionX},{resolutionY},{CommaEliminated(scaleMultiplier)},{buttonPositionX},{buttonPositionY}");
 			}
-			/*catch (Exception e)
-			{
-				Console.WriteLine(e.Message);
-			}*/
 			finally
 			{
 				if (output != null)
@@ -105,7 +101,7 @@ namespace WurmHelper
 
 			resolutionX = int.Parse(values[6]);
 			resolutionY = int.Parse(values[7]);
-			scaleMultiplier = float.Parse(EliminateComma(values[8]));
+			//scaleMultiplier = float.Parse(EliminateComma(values[8]));
 
 			buttonPositionX = int.Parse(values[9]);
 			buttonPositionY = int.Parse(values[10]);

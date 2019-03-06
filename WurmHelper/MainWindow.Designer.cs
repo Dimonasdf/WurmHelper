@@ -70,7 +70,7 @@
             // 
             // StartButton
             // 
-            this.StartButton.Location = new System.Drawing.Point(706, 14);
+            this.StartButton.Location = new System.Drawing.Point(705, 15);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(150, 50);
             this.StartButton.TabIndex = 15;
@@ -81,7 +81,7 @@
             // CurrentMousePositionLabel1
             // 
             this.CurrentMousePositionLabel1.AutoSize = true;
-            this.CurrentMousePositionLabel1.Location = new System.Drawing.Point(23, 123);
+            this.CurrentMousePositionLabel1.Location = new System.Drawing.Point(25, 110);
             this.CurrentMousePositionLabel1.Name = "CurrentMousePositionLabel1";
             this.CurrentMousePositionLabel1.Size = new System.Drawing.Size(174, 20);
             this.CurrentMousePositionLabel1.TabIndex = 7;
@@ -91,7 +91,7 @@
             // CurrentMousePositionLabel2
             // 
             this.CurrentMousePositionLabel2.AutoSize = true;
-            this.CurrentMousePositionLabel2.Location = new System.Drawing.Point(203, 123);
+            this.CurrentMousePositionLabel2.Location = new System.Drawing.Point(205, 110);
             this.CurrentMousePositionLabel2.Name = "CurrentMousePositionLabel2";
             this.CurrentMousePositionLabel2.Size = new System.Drawing.Size(45, 20);
             this.CurrentMousePositionLabel2.TabIndex = 8;
@@ -100,14 +100,14 @@
             // 
             // totalProgressBar
             // 
-            this.totalProgressBar.Location = new System.Drawing.Point(224, 183);
+            this.totalProgressBar.Location = new System.Drawing.Point(225, 185);
             this.totalProgressBar.Name = "totalProgressBar";
-            this.totalProgressBar.Size = new System.Drawing.Size(631, 20);
+            this.totalProgressBar.Size = new System.Drawing.Size(630, 20);
             this.totalProgressBar.TabIndex = 13;
             // 
             // durationOfLoopData
             // 
-            this.durationOfLoopData.Location = new System.Drawing.Point(113, 74);
+            this.durationOfLoopData.Location = new System.Drawing.Point(157, 67);
             this.durationOfLoopData.Name = "durationOfLoopData";
             this.durationOfLoopData.Size = new System.Drawing.Size(111, 26);
             this.durationOfLoopData.TabIndex = 3;
@@ -116,7 +116,7 @@
             // offsetDurationOfLoopLabel1
             // 
             this.offsetDurationOfLoopLabel1.AutoSize = true;
-            this.offsetDurationOfLoopLabel1.Location = new System.Drawing.Point(230, 77);
+            this.offsetDurationOfLoopLabel1.Location = new System.Drawing.Point(274, 70);
             this.offsetDurationOfLoopLabel1.Name = "offsetDurationOfLoopLabel1";
             this.offsetDurationOfLoopLabel1.Size = new System.Drawing.Size(18, 20);
             this.offsetDurationOfLoopLabel1.TabIndex = 4;
@@ -126,7 +126,7 @@
             // 
             // offsetDurationOfLoopData
             // 
-            this.offsetDurationOfLoopData.Location = new System.Drawing.Point(254, 74);
+            this.offsetDurationOfLoopData.Location = new System.Drawing.Point(298, 67);
             this.offsetDurationOfLoopData.Name = "offsetDurationOfLoopData";
             this.offsetDurationOfLoopData.Size = new System.Drawing.Size(73, 26);
             this.offsetDurationOfLoopData.TabIndex = 4;
@@ -135,24 +135,24 @@
             // 
             // currentProgressBar
             // 
-            this.currentProgressBar.Location = new System.Drawing.Point(224, 157);
+            this.currentProgressBar.Location = new System.Drawing.Point(225, 150);
             this.currentProgressBar.Name = "currentProgressBar";
-            this.currentProgressBar.Size = new System.Drawing.Size(631, 20);
+            this.currentProgressBar.Size = new System.Drawing.Size(630, 20);
             this.currentProgressBar.TabIndex = 12;
             // 
             // totalProgressLabel
             // 
             this.totalProgressLabel.AutoSize = true;
-            this.totalProgressLabel.Location = new System.Drawing.Point(23, 183);
+            this.totalProgressLabel.Location = new System.Drawing.Point(25, 185);
             this.totalProgressLabel.Name = "totalProgressLabel";
-            this.totalProgressLabel.Size = new System.Drawing.Size(201, 20);
+            this.totalProgressLabel.Size = new System.Drawing.Size(187, 20);
             this.totalProgressLabel.TabIndex = 13;
-            this.totalProgressLabel.Text = "Estimated(!) Total Progress";
+            this.totalProgressLabel.Text = "Estimated Total Progress";
             // 
             // currentProgressLabel
             // 
             this.currentProgressLabel.AutoSize = true;
-            this.currentProgressLabel.Location = new System.Drawing.Point(23, 157);
+            this.currentProgressLabel.Location = new System.Drawing.Point(25, 150);
             this.currentProgressLabel.Name = "currentProgressLabel";
             this.currentProgressLabel.Size = new System.Drawing.Size(129, 20);
             this.currentProgressLabel.TabIndex = 12;
@@ -161,17 +161,17 @@
             // durationOfLoopLabel
             // 
             this.durationOfLoopLabel.AutoSize = true;
-            this.durationOfLoopLabel.Location = new System.Drawing.Point(23, 77);
+            this.durationOfLoopLabel.Location = new System.Drawing.Point(25, 70);
             this.durationOfLoopLabel.Name = "durationOfLoopLabel";
-            this.durationOfLoopLabel.Size = new System.Drawing.Size(88, 20);
+            this.durationOfLoopLabel.Size = new System.Drawing.Size(126, 20);
             this.durationOfLoopLabel.TabIndex = 3;
-            this.durationOfLoopLabel.Text = "Total Loop:";
+            this.durationOfLoopLabel.Text = "Total Loop Time:";
             this.myToolTip.SetToolTip(this.durationOfLoopLabel, resources.GetString("durationOfLoopLabel.ToolTip"));
             // 
             // offsetDurationOfLoop2
             // 
             this.offsetDurationOfLoop2.AutoSize = true;
-            this.offsetDurationOfLoop2.Location = new System.Drawing.Point(333, 77);
+            this.offsetDurationOfLoop2.Location = new System.Drawing.Point(377, 70);
             this.offsetDurationOfLoop2.Name = "offsetDurationOfLoop2";
             this.offsetDurationOfLoop2.Size = new System.Drawing.Size(34, 20);
             this.offsetDurationOfLoop2.TabIndex = 4;
@@ -182,7 +182,7 @@
             // numOfLoopsLabel
             // 
             this.numOfLoopsLabel.AutoSize = true;
-            this.numOfLoopsLabel.Location = new System.Drawing.Point(23, 29);
+            this.numOfLoopsLabel.Location = new System.Drawing.Point(25, 30);
             this.numOfLoopsLabel.Name = "numOfLoopsLabel";
             this.numOfLoopsLabel.Size = new System.Drawing.Size(112, 20);
             this.numOfLoopsLabel.TabIndex = 1;
@@ -191,7 +191,7 @@
             // 
             // numOfLoopsData
             // 
-            this.numOfLoopsData.Location = new System.Drawing.Point(141, 26);
+            this.numOfLoopsData.Location = new System.Drawing.Point(143, 27);
             this.numOfLoopsData.Name = "numOfLoopsData";
             this.numOfLoopsData.Size = new System.Drawing.Size(100, 26);
             this.numOfLoopsData.TabIndex = 1;
@@ -200,7 +200,7 @@
             // numOfClicksLabel
             // 
             this.numOfClicksLabel.AutoSize = true;
-            this.numOfClicksLabel.Location = new System.Drawing.Point(247, 29);
+            this.numOfClicksLabel.Location = new System.Drawing.Point(249, 30);
             this.numOfClicksLabel.Name = "numOfClicksLabel";
             this.numOfClicksLabel.Size = new System.Drawing.Size(109, 20);
             this.numOfClicksLabel.TabIndex = 2;
@@ -209,7 +209,7 @@
             // 
             // numOfClicksData
             // 
-            this.numOfClicksData.Location = new System.Drawing.Point(362, 26);
+            this.numOfClicksData.Location = new System.Drawing.Point(364, 27);
             this.numOfClicksData.Name = "numOfClicksData";
             this.numOfClicksData.Size = new System.Drawing.Size(100, 26);
             this.numOfClicksData.TabIndex = 2;
@@ -218,7 +218,7 @@
             // resolutionLabel
             // 
             this.resolutionLabel.AutoSize = true;
-            this.resolutionLabel.Location = new System.Drawing.Point(23, 399);
+            this.resolutionLabel.Location = new System.Drawing.Point(25, 400);
             this.resolutionLabel.Name = "resolutionLabel";
             this.resolutionLabel.Size = new System.Drawing.Size(140, 20);
             this.resolutionLabel.TabIndex = 8;
@@ -228,7 +228,7 @@
             // resolutionXLabel
             // 
             this.resolutionXLabel.AutoSize = true;
-            this.resolutionXLabel.Location = new System.Drawing.Point(169, 399);
+            this.resolutionXLabel.Location = new System.Drawing.Point(171, 400);
             this.resolutionXLabel.Name = "resolutionXLabel";
             this.resolutionXLabel.Size = new System.Drawing.Size(50, 20);
             this.resolutionXLabel.TabIndex = 9;
@@ -237,7 +237,7 @@
             // 
             // resolutionXData
             // 
-            this.resolutionXData.Location = new System.Drawing.Point(225, 396);
+            this.resolutionXData.Location = new System.Drawing.Point(227, 397);
             this.resolutionXData.Name = "resolutionXData";
             this.resolutionXData.Size = new System.Drawing.Size(100, 26);
             this.resolutionXData.TabIndex = 9;
@@ -246,7 +246,7 @@
             // resolutionYLabel
             // 
             this.resolutionYLabel.AutoSize = true;
-            this.resolutionYLabel.Location = new System.Drawing.Point(331, 399);
+            this.resolutionYLabel.Location = new System.Drawing.Point(333, 400);
             this.resolutionYLabel.Name = "resolutionYLabel";
             this.resolutionYLabel.Size = new System.Drawing.Size(56, 20);
             this.resolutionYLabel.TabIndex = 10;
@@ -255,7 +255,7 @@
             // 
             // resolutionYData
             // 
-            this.resolutionYData.Location = new System.Drawing.Point(393, 396);
+            this.resolutionYData.Location = new System.Drawing.Point(395, 397);
             this.resolutionYData.Name = "resolutionYData";
             this.resolutionYData.Size = new System.Drawing.Size(100, 26);
             this.resolutionYData.TabIndex = 10;
@@ -264,7 +264,7 @@
             // scaleMultiplierLabel
             // 
             this.scaleMultiplierLabel.AutoSize = true;
-            this.scaleMultiplierLabel.Location = new System.Drawing.Point(499, 399);
+            this.scaleMultiplierLabel.Location = new System.Drawing.Point(501, 400);
             this.scaleMultiplierLabel.Name = "scaleMultiplierLabel";
             this.scaleMultiplierLabel.Size = new System.Drawing.Size(141, 20);
             this.scaleMultiplierLabel.TabIndex = 11;
@@ -273,7 +273,7 @@
             // 
             // scaleMultiplierData
             // 
-            this.scaleMultiplierData.Location = new System.Drawing.Point(646, 396);
+            this.scaleMultiplierData.Location = new System.Drawing.Point(648, 397);
             this.scaleMultiplierData.Name = "scaleMultiplierData";
             this.scaleMultiplierData.Size = new System.Drawing.Size(100, 26);
             this.scaleMultiplierData.TabIndex = 11;
@@ -283,17 +283,17 @@
             // 
             this.EventLog.AccessibleName = "EventLog";
             this.EventLog.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
-            this.EventLog.Location = new System.Drawing.Point(12, 217);
+            this.EventLog.Location = new System.Drawing.Point(25, 225);
             this.EventLog.Name = "EventLog";
             this.EventLog.ReadOnly = true;
-            this.EventLog.Size = new System.Drawing.Size(854, 157);
+            this.EventLog.Size = new System.Drawing.Size(830, 157);
             this.EventLog.TabIndex = 20;
             this.EventLog.Text = "Event Log";
             // 
             // buttonPositionLabel
             // 
             this.buttonPositionLabel.AutoSize = true;
-            this.buttonPositionLabel.Location = new System.Drawing.Point(309, 123);
+            this.buttonPositionLabel.Location = new System.Drawing.Point(311, 110);
             this.buttonPositionLabel.Name = "buttonPositionLabel";
             this.buttonPositionLabel.Size = new System.Drawing.Size(117, 20);
             this.buttonPositionLabel.TabIndex = 9;
@@ -302,7 +302,7 @@
             // 
             // buttonPositionXData
             // 
-            this.buttonPositionXData.Location = new System.Drawing.Point(432, 120);
+            this.buttonPositionXData.Location = new System.Drawing.Point(434, 107);
             this.buttonPositionXData.Name = "buttonPositionXData";
             this.buttonPositionXData.Size = new System.Drawing.Size(100, 26);
             this.buttonPositionXData.TabIndex = 10;
@@ -310,7 +310,7 @@
             // 
             // buttonPositionYData
             // 
-            this.buttonPositionYData.Location = new System.Drawing.Point(538, 120);
+            this.buttonPositionYData.Location = new System.Drawing.Point(540, 107);
             this.buttonPositionYData.Name = "buttonPositionYData";
             this.buttonPositionYData.Size = new System.Drawing.Size(100, 26);
             this.buttonPositionYData.TabIndex = 11;
@@ -318,7 +318,7 @@
             // 
             // StopButton
             // 
-            this.StopButton.Location = new System.Drawing.Point(706, 77);
+            this.StopButton.Location = new System.Drawing.Point(705, 80);
             this.StopButton.Name = "StopButton";
             this.StopButton.Size = new System.Drawing.Size(150, 50);
             this.StopButton.TabIndex = 16;
@@ -329,7 +329,7 @@
             // estimatedTotalLabel
             // 
             this.estimatedTotalLabel.AutoSize = true;
-            this.estimatedTotalLabel.Location = new System.Drawing.Point(499, 14);
+            this.estimatedTotalLabel.Location = new System.Drawing.Point(501, 15);
             this.estimatedTotalLabel.Name = "estimatedTotalLabel";
             this.estimatedTotalLabel.Size = new System.Drawing.Size(162, 20);
             this.estimatedTotalLabel.TabIndex = 17;
@@ -344,7 +344,7 @@
             // 
             // minClickDelayData
             // 
-            this.minClickDelayData.Location = new System.Drawing.Point(530, 74);
+            this.minClickDelayData.Location = new System.Drawing.Point(526, 67);
             this.minClickDelayData.Name = "minClickDelayData";
             this.minClickDelayData.Size = new System.Drawing.Size(79, 26);
             this.minClickDelayData.TabIndex = 5;
@@ -352,7 +352,7 @@
             // 
             // maxClickDelayData
             // 
-            this.maxClickDelayData.Location = new System.Drawing.Point(609, 74);
+            this.maxClickDelayData.Location = new System.Drawing.Point(611, 67);
             this.maxClickDelayData.Name = "maxClickDelayData";
             this.maxClickDelayData.Size = new System.Drawing.Size(79, 26);
             this.maxClickDelayData.TabIndex = 6;
@@ -361,11 +361,11 @@
             // clickDelayLabel
             // 
             this.clickDelayLabel.AutoSize = true;
-            this.clickDelayLabel.Location = new System.Drawing.Point(398, 77);
+            this.clickDelayLabel.Location = new System.Drawing.Point(430, 70);
             this.clickDelayLabel.Name = "clickDelayLabel";
-            this.clickDelayLabel.Size = new System.Drawing.Size(126, 20);
+            this.clickDelayLabel.Size = new System.Drawing.Size(90, 20);
             this.clickDelayLabel.TabIndex = 5;
-            this.clickDelayLabel.Text = "With Click Delay:";
+            this.clickDelayLabel.Text = "Click Delay:";
             this.myToolTip.SetToolTip(this.clickDelayLabel, "Click delay values. Typical human double click time is 150 ms.\r\nMouse hardware au" +
         "toclick buttons are 15 ms.\r\nSetting this time the same or too low may also trigg" +
         "er server bot alert.");
@@ -374,7 +374,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(878, 385);
+            this.ClientSize = new System.Drawing.Size(878, 394);
             this.Controls.Add(this.estimatedTotalLabel);
             this.Controls.Add(this.StopButton);
             this.Controls.Add(this.buttonPositionYData);

@@ -71,7 +71,7 @@ namespace WurmHelper
 
 
 					currentProgressBarTimer.Start();
-                    await Delayer(delayTime);
+                    await Delayer(delayTime).ConfigureAwait(true);
 
 					currentProgressBarTimer.Stop();
 
@@ -99,8 +99,6 @@ namespace WurmHelper
 			totalProgressBarTimer.Stop();
 			totalProgressBar.Value = totalProgressBar.Maximum;
 			currentProgressBar.Value = currentProgressBar.Maximum;
-
-			return;
 		}
 
 		async Task Delayer(int delay)

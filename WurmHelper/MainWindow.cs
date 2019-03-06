@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows.Forms;
+
 
 namespace WurmHelper
 {
@@ -114,15 +104,13 @@ namespace WurmHelper
 			UpdateEventLog("Task completed");
 			totalProgressBarTimer.Stop();
 			totalProgressBar.Value = totalProgressBar.Maximum;
+
+			return;
 		}
 
 		async Task Delayer(int delay)
 		{
-			await Task.Run(async () =>
-			{
-				await Task.Delay(delay);
-			}
-				);
+			await Task.Run(async () =>  { await Task.Delay(delay); } );
 		}
 
 		private void MousePosRefreshTimer_Tick(object sender, EventArgs e)

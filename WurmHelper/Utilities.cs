@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace WurmHelper
 {
@@ -62,10 +53,10 @@ namespace WurmHelper
 
 				output.WriteLine($"{numOfLoops},{durationOfLoop},{extraDurationOfLoop},{minClickDelay},{maxClickDelay},{numOfClicks},{resolutionX},{resolutionY},{CommaEliminated(scaleMultiplier)},{buttonPositionX},{buttonPositionY}");
 			}
-			catch (Exception e)
+			/*catch (Exception e)
 			{
 				Console.WriteLine(e.Message);
-			}
+			}*/
 			finally
 			{
 				if (output != null)
